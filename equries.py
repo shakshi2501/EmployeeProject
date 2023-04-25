@@ -1,41 +1,32 @@
 import analysis as anal
+import tkinter as tk
 import mysql.connector as mq
 
-class Choice:
+#class Choice:
 
-    ch=0
-    def __init__(self):
-        self.ch = int(input('Enter choice:'))
-        return self.ch
+#    ch=0
+#   def __init__(self):
+#        self.ch = int(input('Enter choice:'))
+#        emp.start()
+#        return self.ch
 
-class Queries(Choice):
-    con = mq.connect(host='localhost', database='emp_db', user='root', password='sunrise.123')
-    x = 0
-    def __init__(self):
-        self.x= super(Queries,self).__init__()
-        if self.x==1:
-            self.dfetch()
-        elif self.x==2:
-            self.prate()
-        elif self.x==3:
-          anal.Analyse()
+con= mq.connect(host='localhost', database = 'emp_db', user = 'root', password = 'sunrise.123')
 
-    def dfetch(self):
-        cursor = self.con.cursor()
-        dname = input('Enter name of department: ')
-        q = "Select FullName from emp_db.emp_table WHERE EmpDepartment= %s"
-        cursor.execute(q,(dname,))
-        res = cursor.fetchall()
-        for i in res:
-            print(i)
+def prate(window, x, y):
+    try:
+        con = mq.connect(host='localhost', database='emp_db', user='root', password='sunrise.123')
+        if con.is_connected():
+            print("Connected")
+            cursor = con.cursor()
+            e_id = x
+            rate = y
+            q = "Update emp_table set PerformanceRating="+rate+" where EmployeeID=%s"
+            cursor.execute(q, (e_id,))
+            con.commit()
+            tk.Label(window, text="Record Updated successfully", font=('Helvetica', 14), bg='#F4CE82').place(x=282, y=310)
+    except Exception as e:
+        error_msg = "Error while connecting to MySQL"
+        tk.Label(window, text=error_msg, font=("Helvetica", 14), bg="#F4CE82").place(x=282, y=310)
 
 
-    def prate(self):
-        cursor = self.con.cursor()
-        e_id=input('Enter the employee ID to update performance rating: ')
-        rate=int(input('Enter the New Employee Performance Rating: '))
-        q="Update emp_table set PerformanceRating=%s where EmployeeID= %s"
-        cursor.execute(q,(rate,e_id,))
-        self.con.commit()
-        print("Record Updated successfully ")
 
