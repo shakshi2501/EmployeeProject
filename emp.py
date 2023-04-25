@@ -36,10 +36,12 @@ def performance_rating():
      window.geometry('805x450+388+154')
 
      tk.Label(window, text="Enter Employee ID", font=("Helvetica", 14), bg='#F4CE82').place(x=150, y=60)
-     emp_id = tk.Entry(window, font=("Helvetica", 11), width=42).place(x=340, y=60, height=25)
+     emp_id = tk.Entry(window, font=("Helvetica", 11), width=42)
+     emp_id.place(x=340, y=60, height=25)
 
      tk.Label(window, text="Enter Performance Rating (1 to 5)", font=("Helvetica", 14), bg='#F4CE82').place(x=150, y=110)
-     emp_rating = tk.Entry(window, font=("Helvetica", 11), width=26).place(x=470, y=110, height=25)
+     emp_rating = tk.Entry(window, font=("Helvetica", 11), width=26)
+     emp_rating.place(x=470, y=110, height=25)
 
      tk.Label(window, text="Update Performance Ranking for ....", font=("Helvetica", 14), bg='#F4CE82').place(x=150,y=160)
 
@@ -55,14 +57,14 @@ def search_analysis():
      tk.Label(window, text="Choose Category", font=("Helvetica", 16)).place(x=90, y=50, rely=0)
      clicked = tk.StringVar()
      option_clicked = ttk.Combobox(window, width = 35, textvariable = clicked)
-     option_clicked['values'] = ('Audit', 'Tax', 'Advisory', 'Consulting')   ##### Here the column names will be be shown
+     option_clicked['values'] = ('Gender', 'EducationBackground', 'EmpDepartment', 'EmpJobRole')   ##### Here the column names will be be shown
      option_clicked.grid(padx=90, pady=100)
      option_clicked.current(0)
 
      tk.Label(window, text="Choose sub-category", font=("Helvetica", 16)).place(x=480, y=50, rely=0)
      clicked_sub = tk.StringVar()
      sub_option = ttk.Combobox(window, width = 35, textvariable=clicked_sub)
-     sub_option['values'] = ('Cyber', 'IT')    ###### Here the unique values from the chosen column will be shown
+     sub_option['values'] = ()    ###### Here the unique values from the chosen column will be shown
      sub_option.grid(row=0, column=2, padx=70, pady=0)
      sub_option.current(0)
 
