@@ -3,8 +3,28 @@ from tkinter import ttk
 from tkinter import *
 import pandas as pd
 
-df = pd.read_excel(r"C:\Users\amribose\Desktop\Employee_Dataset.xls", index_col = 0)
-print(df.head())
+
+
+def show_emp():
+     details_win = tk.Toplevel(root)
+     details_win.geometry('850x500+365+132')
+
+     h = Scrollbar(details_win, orient='horizontal')
+     h.pack(side=BOTTOM, fill=X)
+
+     v = Scrollbar(details_win)
+     v.pack(side=RIGHT, fill=Y)
+
+     t = Text(details_win, width=80, height=50, wrap=NONE, xscrollcommand = h.set, yscrollcommand = v.set)
+
+     for i in range(200):
+          t.insert(END, "this is some text jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj\n")
+
+     t.pack(side=TOP, fill=X)
+     h.config(command=t.xview)
+     v.config(command=t.yview)
+
+     details_win.lift()
 
 def data_analysis():
      window = tk.Toplevel(root)
