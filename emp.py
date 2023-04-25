@@ -35,12 +35,15 @@ def performance_rating():
      window.title("Performance Rating")
      window.geometry('805x450+388+154')
 
-     tk.Label(window, text="Enter Employee ID", font=("Helvetica", 14)).place(x=150,y=50)
-     emp_id = tk.Entry(window, font=("Helvetica", 11), width=42).place(x=340, y=50, height=25)
+     tk.Label(window, text="Enter Employee ID", font=("Helvetica", 14), bg='#F4CE82').place(x=150, y=60)
+     emp_id = tk.Entry(window, font=("Helvetica", 11), width=42).place(x=340, y=60, height=25)
 
-     tk.Label(window, text="Update Performance Ranking for ....", font=("Helvetica", 14),).place(x=150, y=100)
+     tk.Label(window, text="Enter Performance Rating (1 to 5)", font=("Helvetica", 14), bg='#F4CE82').place(x=150, y=110)
+     emp_rating = tk.Entry(window, font=("Helvetica", 11), width=26).place(x=470, y=110, height=25)
 
-     tk.Button(window, text="Update Rating", width=18, font=('Times New Roman', 16), command=lambda: show_emp()).place(x=300, y=180)
+     tk.Label(window, text="Update Performance Ranking for ....", font=("Helvetica", 14), bg='#F4CE82').place(x=150,y=160)
+
+     tk.Button(window, text="Update Rating", width=18, font=('Times New Roman', 16), command=lambda: show_emp(emp_id, emp_rating)).place(x=300, y=240)
 
 
 def search_analysis():
